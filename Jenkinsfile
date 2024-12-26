@@ -1,20 +1,35 @@
-class DayPipeline {
-    List<String> stages = ["breakfast", "workout", "study", "familytime", "play"]
-    String output = "my day went well"
-
-    void executeStage(String stage) {
-        println "Executing stage: $stage"
-    }
-
-    void runPipeline() {
-        println "Starting the pipeline..."
-        stages.each { stage ->
-            executeStage(stage)
+pipeline {
+    agent any
+    stages {
+        stage('Breakfast') {
+            steps {
+                echo "I'm doing breakfast"
+            }
         }
-        println "Output: $output"
+        stage('Workout') {
+            steps {
+                echo "I'm doing Workout"
+            }
+        }
+        stage('Study') {
+            steps {
+                echo "I'm doing Study"
+            }
+        }
+        stage('Family Time') {
+            steps {
+                echo "Spending time with family"
+            }
+        }
+        stage('Play') {
+            steps {
+                echo "I'm playing"
+            }
+        }
+    }
+    post {
+        always {
+            echo "my day went well"
+        }
     }
 }
-
-// Create and run the pipeline
-def pipeline = new DayPipeline()
-pipeline.runPipeline()
