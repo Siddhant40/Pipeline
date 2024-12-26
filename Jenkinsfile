@@ -40,9 +40,9 @@ node{
   stage('Test'){
     echo "Testing"
   }
-  if(currentBuild.result=='SUCCESS'){
-  echo "Looks good"
-}else{
-  echo "Error"
-}
+    if(currentBuild.result=='SUCCESS'){
+    echo "Looks good"
+  }else{
+    echo "Error"
+  }
 }
